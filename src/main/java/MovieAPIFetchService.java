@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -33,8 +35,14 @@ public class MovieAPIFetchService {
         }
     }
 
-    public static MovieData fetchMovieData(String movieName) {
-        return new MovieData(fetchMovieJsonString(movieName));
+    public static MovieData fetchMovieData(String movieName) throws IllegalArgumentException {
+        String json = fetchMovieJsonString(movieName);
+        JSONObject obj = new JSONObject(json);
+        if (obj.getBoolean("Response") == true) {
+            return new MovieData(json);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
 }

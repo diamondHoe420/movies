@@ -15,7 +15,6 @@ public class MovieData {
 
     public MovieData(String jsonString) {
         JSONObject obj = new JSONObject(jsonString);
-
         try {
             title = obj.getString("Title");
             year = obj.getInt("Year");
@@ -28,6 +27,19 @@ public class MovieData {
         } catch(JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getMovieDetailsString() {
+        String str =
+                title + " " + year + "\n" +
+                director + "\n" +
+                "Gatunek:" + genre + "\n" +
+                "Kategoria Wiekowa: " + rating + "\n" +
+                "Czas trwania " + duration + "\n";
+        str += "Występują:  " + "\n";
+        for (String actor : actors)
+            str += actor + "\n";
+        return str;
     }
 
     public String getTitle() {
