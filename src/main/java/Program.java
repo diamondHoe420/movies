@@ -5,6 +5,6 @@ import java.net.URL;
 
 public class Program {
     public static void main(String[] args) {
-        System.out.println(MovieAPIFetchService.fetchMovieJsonString("scarface"));
+        System.out.println(MovieAPIFetchService.fetchMovieData("scarface"));
     }
 }

@@ -33,4 +33,8 @@ public class MovieAPIFetchService {
         }
     }
 
+    public static MovieData fetchMovieData(String movieName) {
+        return new MovieData(fetchMovieJsonString(movieName));
+    }
+
 }
